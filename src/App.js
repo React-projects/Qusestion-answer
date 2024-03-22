@@ -12,6 +12,11 @@ function App() {
     setdata([...question])
 
   }
+
+  const deletedAllData=()=>{
+    question.splice(0,question.length)
+    setdata([])
+  }
   return (
     <div className="font text-center color-body">
       <Container className="p-5">
@@ -24,7 +29,7 @@ function App() {
             <AccordionQAndA data={data} />
 
             {data.length >= 1 ? (
-              <button className="w-100 btn-color">مسح الكل</button>
+              <button onClick={deletedAllData} className="w-100 btn-color">مسح الكل</button>
             ) : null}
           </Col>
         </Row>

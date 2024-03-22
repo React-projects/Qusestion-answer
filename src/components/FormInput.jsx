@@ -11,7 +11,7 @@ function FormInput({ addData }) {
     setQu('')
     setAn('')
     addData();
-    console.log(question);
+    // console.log(question);
 
   };
   return (
