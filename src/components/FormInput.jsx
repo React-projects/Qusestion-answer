@@ -1,24 +1,23 @@
 import { useState } from "react";
 import { Row, Col, Form } from "react-bootstrap";
-import { question } from "../api/Qusetoin";
+import { question } from "../api/Question";
 
 function FormInput({ addData }) {
   const [qu, setQu] = useState("");
   const [an, setAn] = useState("");
-
+  // * adding item to list of questions
   const addNewItem = () => {
     question.push({ id: Math.random(), q: qu, a: an });
-    setQu('')
-    setAn('')
+    setQu("");
+    setAn("");
     addData();
     // console.log(question);
-
   };
   return (
     <Row>
       <Col md="5">
         <Form.Control
-        value={qu}
+          value={qu}
           onChange={(e) => setQu(e.target.value)}
           type="email"
           placeholder="ادخل السوال"
@@ -26,8 +25,7 @@ function FormInput({ addData }) {
       </Col>
       <Col md="5">
         <Form.Control
-                value={an}
-
+          value={an}
           onChange={(e) => setAn(e.target.value)}
           type="text"
           placeholder="ادخل الاجابه"

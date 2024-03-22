@@ -1,6 +1,14 @@
 import Accordion from "react-bootstrap/Accordion";
+import { question } from "../api/Question";
 
-function AccordionQAndA({ data }) {
+function AccordionQAndA({ data, deletedOneItem }) {
+
+  // * deleted question  from list of questions
+  const deletedQuestion = (ID) => {
+    const index = question.findIndex((item) => item.id === ID);
+    question.splice(index, 1);
+    deletedOneItem(question)
+  };
   return (
     <div>
       {data.length ? (
@@ -14,7 +22,12 @@ function AccordionQAndA({ data }) {
                 </Accordion.Header>
                 <Accordion.Body>
                   <p className="d-inline ms-3"> {item.a}</p>
-                  <button className="btn-color  ">مسح السوال</button>
+                  <button
+                    onClick={() => deletedQuestion(item.id)}
+                    className="btn-color  "
+                  >
+                    مسح السوال
+                  </button>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
