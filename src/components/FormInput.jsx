@@ -2,16 +2,21 @@ import { useState } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { question } from "../api/Question";
 
-function FormInput({ addData }) {
+function FormInput({ addData, notify }) {
   const [qu, setQu] = useState("");
   const [an, setAn] = useState("");
   // * adding item to list of questions
   const addNewItem = () => {
     question.push({ id: Math.random(), q: qu, a: an });
+    // !  condition to make notifications run
+
+    if (qu === "" || an === "") {
+      notify(" من فضلك اكمل البيانات اولا  ", "error");
+      return;
+    }
     setQu("");
     setAn("");
     addData();
-    // console.log(question);
   };
   return (
     <Row>

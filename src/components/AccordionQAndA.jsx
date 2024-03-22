@@ -2,17 +2,23 @@ import Accordion from "react-bootstrap/Accordion";
 import { question } from "../api/Question";
 
 function AccordionQAndA({ data, deletedOneItem }) {
+  const localData= JSON.parse(localStorage.getItem('items'));
+  console.log(localData);
 
   // * deleted question  from list of questions
   const deletedQuestion = (ID) => {
-    const index = question.findIndex((item) => item.id === ID);
-    question.splice(index, 1);
-    deletedOneItem(question)
+    if(localStorage.getItem('items')!=null){
+      const index = question.findIndex((item) => item.id === ID);
+      question.splice(index, 1);
+      deletedOneItem(question)
+
+    }
+ 
   };
   return (
     <div>
-      {data.length ? (
-        data.map((item, index) => {
+      {localStorage.getItem('items') !=null ? (
+        localData.map((item, index) => {
           return (
             <Accordion className="py-1" key={index} defaultActiveKey={item.id}>
               <Accordion.Item eventKey="0">
