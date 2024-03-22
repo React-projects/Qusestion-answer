@@ -7,6 +7,11 @@ import { question } from "./api/Qusetoin";
 
 function App() {
   const [data, setdata] = useState(question);
+
+  const addItem =()=>{
+    setdata([...question])
+
+  }
   return (
     <div className="font text-center color-body">
       <Container className="p-5">
@@ -15,7 +20,7 @@ function App() {
             <TitleProject />
           </Col>
           <Col md="8">
-            <FormInput />
+            <FormInput addData={addItem} />
             <AccordionQAndA data={data} />
 
             {data.length >= 1 ? (
